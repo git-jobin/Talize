@@ -4,6 +4,7 @@ import com.jobinjose.talize.dao.UserDao;
 import com.jobinjose.talize.model.UserModel;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ public class UserController {
     private UserDao udao;
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
 
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/signup", produces = "application/json", consumes = "application/json")
     public HashMap<String, String> UserSignup(@RequestBody UserModel user){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
